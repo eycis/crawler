@@ -7,6 +7,6 @@ response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 print(soup.title)
 
-blog_titles = soup.findAll(attrs={"class":"col-sm-8 col-lg-7"})
+blog_titles = soup.findAll(attrs={"class":"content_main"})
 for title in blog_titles:
     print(title.text)
