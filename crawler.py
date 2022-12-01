@@ -5,8 +5,9 @@ url = "https://www.belastingdienst.nl/wps/wcm/connect/bldcontenten/belastingdien
 response = requests.get(url)
 
 soup = BeautifulSoup(response.text, 'html.parser')
-print(soup.title)
-
 blog_titles = soup.findAll(attrs={"class":"content_main"})
+
 for title in blog_titles:
     print(title.text)
+
+#text co chceme je jen v ul toho divu, tedy musíme najít jen způsob, jak vytisknout jen tuhle část. 
