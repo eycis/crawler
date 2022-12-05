@@ -5,9 +5,13 @@ url = "https://www.belastingdienst.nl/wps/wcm/connect/bldcontenten/belastingdien
 response = requests.get(url)
 
 soup = BeautifulSoup(response.text, 'html.parser')
-blog_titles = soup.findAll(attrs={"class":"content_main"})
+blog_titles = soup.find_all(attrs={"class":"content_main"})
 
 for title in blog_titles:
+    if title.p:
+        _=title.p.extract()
+    if title.h1:
+        _=title.h1.extract()
     print(title.text)
 
 #text co chceme je jen v ul toho divu, tedy musíme najít jen způsob, jak vytisknout jen tuhle část. 
